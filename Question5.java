@@ -27,6 +27,25 @@ public class Question5
      */
      
     Scanner in = new Scanner(System.in);
-    
+    /**System.out.print("Enter a number: ");*/
+    int number = in.nextInt();
+    int a;
+    int set[] = new int [number];
+    for (a = 0; a < number; a++){
+       for(int i=0; i<number; i++) {
+         System.out.print("Enter an integer: ");
+         set[i] = in.nextInt();
+       }
+    }
+    for (int i=0; i < set.length; i++) {
+     count[set[i]]++;
+    }
+    int index = count.length-1;
+    int mode;
+    for (int i=count.length-2; i >=0; i--) {
+        if (count[i] >= count[index])
+            mode = i;
+    }
+    System.out.print(mode);
   }
 }
