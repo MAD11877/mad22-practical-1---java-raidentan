@@ -24,6 +24,5 @@ public class Question4
       for(b = base; b > a; b--) {
         System.out.print("*");
       }
-      System.out.println();
   }
 }
