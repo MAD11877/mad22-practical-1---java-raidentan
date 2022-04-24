@@ -33,7 +33,7 @@ public class Question5
     int set[] = new int [number];
     for (a = 0; a < number; a++){
        for(int i=0; i<number; i++) {
-         System.out.print("Enter an integer: ");
+         /**System.out.print("Enter an integer: ");*/
          set[i] = in.nextInt();
        }
     }
