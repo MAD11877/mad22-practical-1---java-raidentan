@@ -37,15 +37,24 @@ public class Question5
          set[i] = in.nextInt();
        }
     }
-    for (int i=0; i < set.length; i++) {
-     count[set[i]]++;
+    
+    double maxValue = -1.0d;
+    int maxCount = 0;
+    for (int i = 0; i < set.length; ++i) {
+      double currentValue = set[i];
+      int currentCount = 1;
+      for (int j = i + 1; j < set.length; ++j) {
+        if (Math.abs(set[j] - currentValue) < epsilon) {
+            ++currentCount;
+        } 
+      }
+      if (currentCount > maxCount) {
+         maxCount = currentCount;
+         maxValue = currentValue;
+      } else if (currentCount == maxCount) {
+         maxValue = Double.NaN;
+      }
     }
-    int index = count.length-1;
-    int mode;
-    for (int i=count.length-2; i >=0; i--) {
-        if (count[i] >= count[index])
-            mode = i;
-    }
-    System.out.print(mode);
+    System.out.print(maxValue);
   }
 }
