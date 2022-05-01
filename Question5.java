@@ -28,34 +28,30 @@ public class Question5
      */
      
     Scanner in = new Scanner(System.in);
-    /**System.out.print("Enter a number: ");*/
-    int number = in.nextInt();
-    int a;
-    int set[] = new int [number];
-    for (a = 0; a < number; a++){
-       for(int i=0; i<number; i++) {
-         /**System.out.print("Enter an integer: ");*/
-         set[i] = in.nextInt();
-       }
-    }
-    
-    double maxValue = -1.0d;
-    int maxCount = 0;
-    for (int i = 0; i < set.length; ++i) {
-      double currentValue = set[i];
-      int currentCount = 1;
-      for (int j = i + 1; j < set.length; ++j) {
-        if (Math.abs(set[j] - currentValue) < epsilon) {
-            ++currentCount;
-        } 
+    //System.out.print("State the number of integers you wish to use: ");
+    int integer = in.nextInt();
+    HashMap<Integer, Integer> numberhashmap = new HashMap<>();
+    ArrayList<Integer> numbers = new ArrayList<>();
+    for (int i = 1; i <= integer; i++) {
+      //System.out.print("Enter number " + i + ": ");
+      int number = in.nextInt();
+      if (numberhashmap.containsKey(number) == false) {
+        numberhashmap.put(number, 1);
+        numbers.add(number);
       }
-      if (currentCount > maxCount) {
-         maxCount = currentCount;
-         maxValue = currentValue;
-      } else if (currentCount == maxCount) {
-         maxValue = Double.NaN;
+      else {
+        numberhashmap.put(number, numberhashmap.get(number) + 1);
       }
     }
-    System.out.print(maxValue);
+    int mode = -1;
+    int countmax = -1;
+    for(int x : numbers) {
+      int count = numberhashmap.get(x);
+      if (count > countmax) {
+        mode = x;
+        countmax = count;
+      }
+    }
+    System.out.println(mode);  
   }
 }
